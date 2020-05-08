@@ -5,6 +5,7 @@ using namespace std;
 Publicacao::Publicacao(Perfil *autor, string texto){
     this->autor = autor;
     this->texto = texto;
+    this->quantidadeDeCurtidas = 0;
 }
 
 Publicacao::~Publicacao(){
@@ -20,13 +21,14 @@ Perfil *Publicacao::getAutor(){
     return this->autor;
 }
 
-// setters
-void Publicacao::setTexto(string nome){
-    this->texto = nome;
+void Publicacao::curtir(Perfil* quemCurtiu){
+    if (quemCurtiu != this){
+        this->quantidadeDeCurtidas++;
+    }
 }
 
-void  Publicacao::setAutor(Perfil *autor){
-    this->autor = autor;
+int Publicacao::getCurtidas(){
+    return quantidadeDeCurtidas;
 }
 
 void Publicacao::imprimir(){
