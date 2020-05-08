@@ -100,8 +100,7 @@ void cadastrarDisciplina(RedeSocial *rede){
 	bool estaNaLista = numeroDoResponsavel > 0 && numeroDoResponsavel <= rede->getQuantidadeDePerfis();
 
 	if (numeroDoResponsavel == 0){
-		cout << "0 - Operacao cancelada!" << endl;
-		escolherOpcao(rede);
+		opcaoCancelar(rede);
 	} else if (estaNaLista){
 		if (dynamic_cast<Professor*>(rede->getPerfis[numeroDoResponsavel - 1]) != NULL){ // rever oq esse cara faz
 			// se eh professor
@@ -120,9 +119,29 @@ void cadastrarDisciplina(RedeSocial *rede){
 		}
 		
 	} else {
-		cout << "Opcao invalida!" << endl;
+		opcaoInvalida(rede);
+	}
+}
 
-		escolherOpcao(rede);
+
+
+void logar(RedeSocial *rede){
+	
+	int numeroDoPerfil;
+
+	cout << "Escolha um perfil: " << endl;
+    listarPerfis(rede);
+
+	cout << "Digite o numero ou 0 para cancelar: ";
+    cin >> numeroDoPerfil;
+    cout << endl;
+
+	bool estaNaLista = numeroDoPerfil > 0 && numeroDoPerfil <= rede->getQuantidadeDePerfis();
+
+	if (numeroDoPerfil == 0){
+		opcaoCancelar(rede);
+	} else if (estaNaLista){
+		// numero valido
 	}
 }
 
@@ -131,6 +150,16 @@ void listarPerfis(RedeSocial *rede){
 		cout << to_string(i+1) << ") " << rede->getPerfis[i]->getNome() << endl;
 	}
 	cout << endl;
+}
+
+void opcaoCancelar(RedeSocial *rede){
+	cout << "0 - Operacao cancelada!" << endl;
+	escolherOpcao(rede);
+}
+
+void opcaoInvalida(RedeSocial *rede){
+	cout << "Opcao invalida!" << endl;
+	escolherOpcao(rede);
 }
 
 void terminar(RedeSocial *rede){
