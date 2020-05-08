@@ -74,12 +74,15 @@ void cadastrarPerfil(RedeSocial *rede){
 
 void cadastrarDisciplina(RedeSocial *rede){
 	string nome;
+	string sigla;
     int numeroDoResponsavel;
-    //Professor* responsavel = NULL;
-    //int npreRequisito;
-    //Disciplina* preRequisito = NULL;
 
 	cout << "Informe os dados da disciplina: " << endl;
+    cout << endl;
+
+	cout << "Sigla: ";
+    cin.ignore(100, '\n');
+    getline(cin, sigla);
     cout << endl;
 
 	cout << "Nome: ";
@@ -94,8 +97,31 @@ void cadastrarDisciplina(RedeSocial *rede){
     cin >> numeroDoResponsavel;
     cout << endl;
 
+	bool estaNaLista = numeroDoResponsavel > 0 && numeroDoResponsavel <= rede->getQuantidadeDePerfis();
+
 	if (numeroDoResponsavel == 0){
 		cout << "0 - Operacao cancelada!" << endl;
+		escolherOpcao(rede);
+	} else if (estaNaLista){
+		if (dynamic_cast<Professor*>(rede->getPerfis[numeroDoResponsavel - 1]) != NULL){ // rever oq esse cara faz
+			// se eh professor
+			Disciplina* perfil = new Disciplina(sigla, nome, rede->getPerfis[numeroDoResponsavel - 1]);
+			
+			rede->adicionar(perfil);
+
+			// adicionado com sucesso
+			escolherOpcao(rede);
+		} else {
+			// se nao eh professor
+
+            cout << "Somente professores podem ser responsaveis por disciplinas!" << endl;
+            cout << endl;
+            escolherOpcao(rede);
+		}
+		
+	} else {
+		cout << "Opcao invalida!" << endl;
+
 		escolherOpcao(rede);
 	}
 }
