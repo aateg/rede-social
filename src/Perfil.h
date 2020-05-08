@@ -12,21 +12,33 @@ class Publicacao;
 
 class Perfil {
     public:
-        // construtor
-        Perfil(string nome);
-        // destrutor
+        // construtor e destrutor
+        Perfil(int numeroUSP, string nome, string email);
         virtual ~Perfil();
-        // Adiciona um perfil como seguidor deste perfil.
+        
         bool adicionarSeguidor(Perfil* seguidor);
-        // Faz uma publicacao, que eh divulgada a todos os seguidores do perfil.
-        bool publicar(string texto);
-        // Recebe as publicacoes feitas por um Perfil seguido.
-        bool receber(Publicacao *p);
-        // Imprime o Perfil.
+        
+        virtual bool publicar(string texto);
+        virtual bool publicar(string texto, string data);
+
         virtual void imprimir();
+        
+        bool receber(Publicacao *p);
+
         // Getters e setters
+        int getNumeroUSP();
         string getNome();
-        void setNome (string nome);
+        string getEmail();
+
+        virtual Publicacao** getPublicacoesFeitas();
+        virtual int getQuantidadeDePublicacoesFeitas(); 
+
+        virtual Publicacao** getPublicacoesRecebidas();
+        virtual int getQuantidadeDePublicacoesRecebidas();
+
+        bool verificaSeguidor(Perfil *perfil); // true se ja eh seguidor false cc
+
+        
         
     protected:
         Perfil *seguidores[MAXIMO_SEGUIDORES];
@@ -35,6 +47,8 @@ class Perfil {
     private:
         // Atributos
         string nome;
+        string email
+        int numeroUSP;
         Publicacao *feitas[MAXIMO_PUBLICACOES];
         int quantidadeDePublicacoesFeitas = 0;
         Publicacao *recebidas[MAXIMO_PUBLICACOES];

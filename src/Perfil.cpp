@@ -2,8 +2,10 @@
 #include <iostream>
 using namespace std;
 
-Perfil::Perfil(string nome){
+Perfil::Perfil(int numeroUSP, string nome, string email){
     this->nome = nome;
+    this->numeroUSP = numeroUSP;
+    this->email = email;
 }
 
 Perfil::~Perfil(){
@@ -23,10 +25,39 @@ string Perfil::getNome(){
     return this->nome;
 }
 
+string Perfil::getEmail(){
+    return this->email;
+}
+
+int Perfil::getNumeroUSP(){
+    return this->numeroUSP;
+}
+
 bool Perfil::adicionarSeguidor(Perfil *seguidor){
     if (this->quantidadeDeSeguidores < MAXIMO_SEGUIDORES){
-        this->seguidores[this->quantidadeDeSeguidores] = seguidor;
-        this->quantidadeDeSeguidores++;
+        if (!this->verificaSeguidor(seguidor)){
+            
+            this->seguidores[this->quantidadeDeSeguidores] = seguidor;
+            this->quantidadeDeSeguidores++;
+
+            // envia publicacao para si
+            Publicacao *p = new Publicacao(this, "Novo seguidor: " + seguidor->getNome());
+            this->receber(p);
+            delete p;
+
+            return true;
+        }
+    }
+    return false;
+}
+
+bool Perfil::verificaSeguidor(Perfil *perfil){
+    for (int i = 0; i < this->quantidadeDeSeguidores; i++){
+        if (this->seguidores[i] == perfil){
+            return true;
+        }
+    }
+    if (this == perfil){
         return true;
     }
     return false;
@@ -36,15 +67,13 @@ bool Perfil::publicar(string texto){
     if (this->quantidadeDePublicacoesFeitas < MAXIMO_PUBLICACOES){
         // cria publicacao
         Publicacao *p = new Publicacao(this, texto);
-        //p->setAutor(this);
-        //p->setTexto(texto);
 
         // adiciona publicacao
         this->feitas[this->quantidadeDePublicacoesFeitas] = p;
         this->quantidadeDePublicacoesFeitas++;
 
         // adiciona so perfil dos seguidores
-        for (int i=0; i < this->quantidadeDeSeguidores; i++){
+        for (int i = 0; i < this->quantidadeDeSeguidores; i++){
             this->seguidores[i]->receber(p);
             //(*(*this).seguidores[i]).receber(p); // outra maneira de escrever
         }
@@ -53,6 +82,8 @@ bool Perfil::publicar(string texto){
     return false;
 }
 
+// fazer publicar para caso seja evento
+
 bool Perfil::receber(Publicacao *p){
     if (this->quantidadeDePublicacoesRecebidas < MAXIMO_PUBLICACOES){
         this->recebidas[quantidadeDePublicacoesRecebidas] = p;
@@ -60,6 +91,22 @@ bool Perfil::receber(Publicacao *p){
         return true;
     }
     return false;
+}
+
+Publicacao** Perfil::getPublicacoesFeitas(){
+    return this->feitas;
+}
+
+int Perfil::getQuantidadeDePublicacoesFeitas(){
+    return this->quantidadeDePublicacoesFeitas;
+}
+
+Publicacao** Perfil::getPublicacoesRecebidas(){
+    return this->recebidas;
+}
+
+int getQuantidadeDePublicacoesRecebidas(){
+    return this->quantidadeDePublicacoesRecebidas;
 }
 
 void Perfil::imprimir() {
