@@ -82,7 +82,24 @@ bool Perfil::publicar(string texto){
     return false;
 }
 
-// fazer publicar para caso seja evento
+bool Perfil::publicar(string texto, string data){
+    if (this->quantidadeDePublicacoesFeitas < MAXIMO_PUBLICACOES){
+        // cria publicacao
+        Evento *e = new Evento(this, texto, data);
+
+        // adiciona publicacao
+        this->feitas[this->quantidadeDePublicacoesFeitas] = e;
+        this->quantidadeDePublicacoesFeitas++;
+
+        // adiciona so perfil dos seguidores
+        for (int i = 0; i < this->quantidadeDeSeguidores; i++){
+            this->seguidores[i]->receber(e);
+            //(*(*this).seguidores[i]).receber(e); // outra maneira de escrever
+        }
+        return true;
+    }
+    return false;
+}
 
 bool Perfil::receber(Publicacao *p){
     if (this->quantidadeDePublicacoesRecebidas < MAXIMO_PUBLICACOES){
