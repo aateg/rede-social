@@ -6,9 +6,10 @@
 #include <iostream>
 using namespace std;
 
-RedeSocial::RedeSocial(){ // eh assim que passa vetor como parametro?
-  this->perfis = new Perfil*[this->capacidade];
+RedeSocial::RedeSocial(int numeroMaximoDePerfis){
+  this->perfis = new Perfil*[numeroMaximoDePerfis];
   this->quantidadeDePerfis = 0;
+  this->numeroMaximoDePerfis = numeroMaximoDePerfis;
 }
 
 RedeSocial::~RedeSocial() {
@@ -28,7 +29,7 @@ int RedeSocial::getQuantidadeDePerfis(){
 }
 
 bool RedeSocial::adicionar(Perfil *perfil){
-  if(this->quantidadeDePerfis < this->capacidade){
+  if(this->quantidadeDePerfis < this->numeroMaximoDePerfis){
     this->perfis[this->quantidadeDePerfis] = perfil;
     this->quantidadeDePerfis++;
     return true;
@@ -51,7 +52,7 @@ void RedeSocial::imprimir () {
   }
   cout << endl;
 }
-
+/*
 void RedeSocial::imprimirEstatisticas() {
   int qtdAlunos = 0;
   int qtdProf = 0;
@@ -78,3 +79,4 @@ void RedeSocial::imprimirEstatisticas() {
   cout << "Disciplinas: " << qtdDisc << endl;
   cout << "Perfis: " << qtdPerf << endl;
 }
+*/

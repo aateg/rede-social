@@ -8,18 +8,19 @@ using namespace std;
 
 class RedeSocial {
     public:
-        RedeSocial (); // construtor
-        ~RedeSocial(); // destrutor
+        RedeSocial (int numeroMaximoDePerfis); // construtor
+        virtual ~RedeSocial(); // destrutor
         
         Perfil **getPerfis();
         int getQuantidadeDePerfis();
-        bool adicionar (Perfil *perfil);
-        void imprimir ();
 
-        void imprimirEstatisticas();
+        bool adicionar(Perfil *perfil);
+        virtual void imprimir();
+
+        //void imprimirEstatisticas();
     private:
         Perfil **perfis;
-        const int capacidade = 100;
+        const int numeroMaximoDePerfis;
         int quantidadeDePerfis;
 };
 
