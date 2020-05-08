@@ -6,12 +6,15 @@
 class Disciplina : public Perfil {
     public:
         Disciplina(string sigla, string nome, Professor *responsavel);
-        ~Disciplina();
-        //virtual ~Disciplina(); //???
+        virtual ~Disciplina();
 
         string getSigla();
         Professor *getResponsavel();
-        void imprimir();
+        //void imprimir();
+
+    protected:
+        bool adicionarSeguidor(Perfil *seguidor);
+
     private:
         string sigla;
         Professor *responsavel;
