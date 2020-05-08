@@ -2,13 +2,14 @@
 #define PERFIL_H
 
 #include <string>
-#include "Publicacao.h"
+//#include "Publicacao.h"
 using namespace std;
 
 #define MAXIMO_PUBLICACOES 20
 #define MAXIMO_SEGUIDORES 20
 
 class Publicacao;
+class Evento;
 
 class Perfil {
     public:
@@ -47,7 +48,7 @@ class Perfil {
     private:
         // Atributos
         string nome;
-        string email
+        string email;
         int numeroUSP;
         Publicacao *feitas[MAXIMO_PUBLICACOES];
         int quantidadeDePublicacoesFeitas = 0;

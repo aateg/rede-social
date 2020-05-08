@@ -3,6 +3,10 @@
 
 #include "Publicacao.h"
 
+using namespace std;
+
+class Perfil;
+
 class Evento : public Publicacao {
     public:
         Evento(Perfil* autor, string texto, string data);
@@ -15,3 +19,4 @@ class Evento : public Publicacao {
 };
 
 #endif // EVENTO_H
+

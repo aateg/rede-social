@@ -8,6 +8,15 @@
 
 using namespace std;
 
+void cadastrarPerfil(RedeSocial *rede);
+void cadastrarDisciplina(RedeSocial *rede);
+void logar(RedeSocial *rede);
+void listarPerfis(RedeSocial *rede);
+void opcaoCancelar(RedeSocial *rede);
+void opcaoInvalida(RedeSocial *rede);
+void terminar(RedeSocial *rede);
+
+
 void escolherOpcao(RedeSocial *rede){
 	cout << "Escolha uma opcao:" << endl;
 	cout << "1) Cadastrar Perfil" << endl;
@@ -35,7 +44,7 @@ void cadastrarPerfil(RedeSocial *rede){
 	string nome;
 	string email;
 	string professor;
-	
+
 	cout << "Informe os dados do perfil: " << endl;
 
 	cout << "Numero USP: ";
@@ -105,7 +114,7 @@ void cadastrarDisciplina(RedeSocial *rede){
 		if (dynamic_cast<Professor*>(rede->getPerfis[numeroDoResponsavel - 1]) != NULL){ // rever oq esse cara faz
 			// se eh professor
 			Disciplina* perfil = new Disciplina(sigla, nome, rede->getPerfis[numeroDoResponsavel - 1]);
-			
+
 			rede->adicionar(perfil);
 
 			// adicionado com sucesso
@@ -117,7 +126,7 @@ void cadastrarDisciplina(RedeSocial *rede){
             cout << endl;
             escolherOpcao(rede);
 		}
-		
+
 	} else {
 		opcaoInvalida(rede);
 	}
@@ -126,7 +135,7 @@ void cadastrarDisciplina(RedeSocial *rede){
 
 
 void logar(RedeSocial *rede){
-	
+
 	int numeroDoPerfil;
 
 	cout << "Escolha um perfil: " << endl;

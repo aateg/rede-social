@@ -1,4 +1,6 @@
 #include "Perfil.h"
+#include "Publicacao.h"
+#include "Evento.h"
 #include <iostream>
 using namespace std;
 
@@ -15,10 +17,6 @@ Perfil::~Perfil(){
         delete feitas[i];
     }
     cout << "Perfil deletado" << endl; 
-}
-
-void Perfil::setNome(string nome) {
-    this->nome = nome;
 }
 
 string Perfil::getNome(){
@@ -122,7 +120,7 @@ Publicacao** Perfil::getPublicacoesRecebidas(){
     return this->recebidas;
 }
 
-int getQuantidadeDePublicacoesRecebidas(){
+int Perfil::getQuantidadeDePublicacoesRecebidas(){
     return this->quantidadeDePublicacoesRecebidas;
 }
 

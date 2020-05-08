@@ -22,7 +22,7 @@ Perfil *Publicacao::getAutor(){
 }
 
 void Publicacao::curtir(Perfil* quemCurtiu){
-    if (quemCurtiu != this){
+    if (quemCurtiu != this->autor){
         this->quantidadeDeCurtidas++;
     }
 }
