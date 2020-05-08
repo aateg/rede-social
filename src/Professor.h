@@ -5,14 +5,11 @@
 
 class Professor : public Perfil {
     public:
-        Professor(string nome);
-        Professor(string nome, string departamento);
-        ~Professor();
-        //virtual ~Professor(); //???
+        Professor(int numeroUSP, string nome, string email, string departamento);
+        virtual ~Professor();
 
         string getDepartamento();
 
-        void imprimir();
     private:
         string departamento;
 };

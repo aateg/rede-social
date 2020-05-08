@@ -43,7 +43,7 @@ bool Perfil::adicionarSeguidor(Perfil *seguidor){
             // envia publicacao para si
             Publicacao *p = new Publicacao(this, "Novo seguidor: " + seguidor->getNome());
             this->receber(p);
-            delete p;
+            //delete p; //verificar
 
             return true;
         }
