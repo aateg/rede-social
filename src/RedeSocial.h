@@ -20,7 +20,7 @@ class RedeSocial {
         //void imprimirEstatisticas();
     private:
         Perfil **perfis;
-        const int numeroMaximoDePerfis;
+        int numeroMaximoDePerfis;
         int quantidadeDePerfis;
 };
 

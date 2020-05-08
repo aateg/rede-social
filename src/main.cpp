@@ -4,6 +4,7 @@
 #include "Disciplina.h"
 #include "Evento.h"
 #include <string>
+#include <iostream>
 
 using namespace std;
 
@@ -54,7 +55,7 @@ void cadastrarPerfil(RedeSocial *rede){
     cin >> professor;
     cout << endl;
 
-	if (prof == "n") {
+	if (professor == "n") {
         Perfil *perfil = new Perfil(numeroUSP, nome, email);
         rede->adicionar(perfil);
         escolherOpcao(rede);

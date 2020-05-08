@@ -1,6 +1,5 @@
 #include "RedeSocial.h"
 #include "Perfil.h"
-#include "Aluno.h"
 #include "Professor.h"
 #include "Disciplina.h"
 #include <iostream>
