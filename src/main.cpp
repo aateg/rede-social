@@ -2,7 +2,6 @@
 #include "Perfil.h"
 #include "Professor.h"
 #include "Disciplina.h"
-#include "Aluno.h"
 #include "Evento.h"
 #include <string>
 
