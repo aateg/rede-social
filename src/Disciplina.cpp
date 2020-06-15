@@ -29,7 +29,7 @@ Professor *Disciplina::getResponsavel() {
 bool Disciplina::adicionarSeguidor(Perfil *seguidor){
     if (this->quantidadeDeSeguidores < MAXIMO_SEGUIDORES){
         if (!this->verificaSeguidor(seguidor)){
-            
+
             this->seguidores[this->quantidadeDeSeguidores] = seguidor;
             this->quantidadeDeSeguidores++;
 

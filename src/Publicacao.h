@@ -12,17 +12,17 @@ class Publicacao {
     public:
         // construtor e destrutor
         Publicacao(Perfil *autor, string texto);
-        ~Publicacao();
+        virtual ~Publicacao();
 
-        // Getters 
+        // Getters
         Perfil* getAutor();
         string getTexto();
 
-        virtual void curtir(Perfil* quemCurtiu); 
-        virtual int getCurtidas(); 
+        virtual void curtir(Perfil* quemCurtiu);
+        virtual int getCurtidas();
 
         virtual void imprimir();
-        
+
     private:
         string texto;
         Perfil* autor;

@@ -1,5 +1,6 @@
 #include "Publicacao.h"
 #include <iostream>
+
 using namespace std;
 
 Publicacao::Publicacao(Perfil *autor, string texto){
@@ -32,6 +33,6 @@ int Publicacao::getCurtidas(){
 }
 
 void Publicacao::imprimir(){
-    cout << "Texto: " << this->texto << " - Autor: " 
+    cout << "Texto: " << this->texto << " - Autor: "
         << this->autor->getNome() << endl;
 }

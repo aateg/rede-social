@@ -10,7 +10,7 @@ class RedeSocial {
     public:
         RedeSocial (int numeroMaximoDePerfis); // construtor
         virtual ~RedeSocial(); // destrutor
-        
+
         Perfil **getPerfis();
         int getQuantidadeDePerfis();
 

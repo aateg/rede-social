@@ -19,4 +19,3 @@ class Evento : public Publicacao {
 };
 
 #endif // EVENTO_H
-

@@ -3,6 +3,8 @@
 
 #include <string>
 //#include "Publicacao.h"
+//#include "Evento.h"
+
 using namespace std;
 
 #define MAXIMO_PUBLICACOES 20
@@ -16,14 +18,14 @@ class Perfil {
         // construtor e destrutor
         Perfil(int numeroUSP, string nome, string email);
         virtual ~Perfil();
-        
+
         bool adicionarSeguidor(Perfil* seguidor);
-        
+
         virtual bool publicar(string texto);
         virtual bool publicar(string texto, string data);
 
         virtual void imprimir();
-        
+
         bool receber(Publicacao *p);
 
         // Getters e setters
@@ -32,19 +34,20 @@ class Perfil {
         string getEmail();
 
         virtual Publicacao** getPublicacoesFeitas();
-        virtual int getQuantidadeDePublicacoesFeitas(); 
+        virtual int getQuantidadeDePublicacoesFeitas();
 
         virtual Publicacao** getPublicacoesRecebidas();
         virtual int getQuantidadeDePublicacoesRecebidas();
 
         bool verificaSeguidor(Perfil *perfil); // true se ja eh seguidor false cc
 
-        
-        
+        virtual Perfil** getSeguidores();
+        virtual int getQuantidadeDeSeguidores();
+
     protected:
         Perfil *seguidores[MAXIMO_SEGUIDORES];
         int quantidadeDeSeguidores = 0;
-        
+
     private:
         // Atributos
         string nome;

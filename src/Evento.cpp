@@ -3,7 +3,7 @@
 
 using namespace std;
 
-Evento::Evento (Perfil* autor, string texto, 
+Evento::Evento (Perfil* autor, string texto,
     string data) : Publicacao(autor, texto){
     this->data = data;
 }

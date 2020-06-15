@@ -2,6 +2,7 @@
 #include "Publicacao.h"
 #include "Evento.h"
 #include <iostream>
+
 using namespace std;
 
 Perfil::Perfil(int numeroUSP, string nome, string email){
@@ -16,7 +17,7 @@ Perfil::~Perfil(){
     for (int i = 0; i < this->quantidadeDePublicacoesFeitas; i++){
         delete feitas[i];
     }
-    cout << "Perfil deletado" << endl; 
+    cout << "Perfil deletado" << endl;
 }
 
 string Perfil::getNome(){
@@ -34,7 +35,7 @@ int Perfil::getNumeroUSP(){
 bool Perfil::adicionarSeguidor(Perfil *seguidor){
     if (this->quantidadeDeSeguidores < MAXIMO_SEGUIDORES){
         if (!this->verificaSeguidor(seguidor)){
-            
+
             this->seguidores[this->quantidadeDeSeguidores] = seguidor;
             this->quantidadeDeSeguidores++;
 
@@ -84,6 +85,7 @@ bool Perfil::publicar(string texto, string data){
     if (this->quantidadeDePublicacoesFeitas < MAXIMO_PUBLICACOES){
         // cria publicacao
         Evento *e = new Evento(this, texto, data);
+        //Publicacao *p = dynamic_cast<Publicacao*>(e);
 
         // adiciona publicacao
         this->feitas[this->quantidadeDePublicacoesFeitas] = e;
@@ -122,6 +124,14 @@ Publicacao** Perfil::getPublicacoesRecebidas(){
 
 int Perfil::getQuantidadeDePublicacoesRecebidas(){
     return this->quantidadeDePublicacoesRecebidas;
+}
+
+Perfil** Perfil::getSeguidores(){
+    return this->seguidores;
+}
+
+int Perfil::getQuantidadeDeSeguidores(){
+    return this->quantidadeDeSeguidores;
 }
 
 void Perfil::imprimir() {

@@ -12,7 +12,6 @@ class Disciplina : public Perfil {
         Professor *getResponsavel();
         //void imprimir();
 
-    protected:
         bool adicionarSeguidor(Perfil *seguidor);
 
     private:
